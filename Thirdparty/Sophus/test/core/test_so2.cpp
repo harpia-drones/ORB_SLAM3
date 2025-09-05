@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include <sophus/so2.hpp>
-#include "tests.hpp"
+#include <sophus/test/tests.hpp>
 
 // Explicit instantiate all class templates so that all member methods
 // get compiled and for code coverage analysis.

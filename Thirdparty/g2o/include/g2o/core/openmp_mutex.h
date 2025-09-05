@@ -27,7 +27,7 @@
 #ifndef G2O_OPENMP_MUTEX
 #define G2O_OPENMP_MUTEX
 
-#include <config/config.h>
+#include <g2o/config/config.h>
 
 #ifdef G2O_OPENMP
 #include <omp.h>

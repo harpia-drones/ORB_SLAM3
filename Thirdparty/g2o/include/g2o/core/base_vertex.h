@@ -27,9 +27,9 @@
 #ifndef G2O_BASE_VERTEX_H
 #define G2O_BASE_VERTEX_H
 
-#include <core/optimizable_graph.h>
-#include <core/creators.h>
-#include <stuff/macros.h>
+#include <g2o/core/optimizable_graph.h>
+#include <g2o/core/creators.h>
+#include <g2o/stuff/macros.h>
 
 #include <Eigen/Core>
 #include <Eigen/Dense>
@@ -112,7 +112,7 @@ namespace g2o {
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };
 
-#include "base_vertex.hpp"
+#include <g2o/core/base_vertex.hpp>
 
 } // end namespace g2o
 

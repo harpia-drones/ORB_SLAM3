@@ -31,8 +31,8 @@
 #include <Eigen/Core>
 #include <Eigen/StdVector>
 
-#include <config/config.h>
-#include <core/matrix_operations.h>
+#include <g2o/config/config.h>
+#include <g2o/core/matrix_operations.h>
 
 namespace g2o {
 

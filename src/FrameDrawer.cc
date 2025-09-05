@@ -16,13 +16,13 @@
 * If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "FrameDrawer.h"
-#include "Tracking.h"
+#include <mutex>
+
+#include <orbslam3/FrameDrawer.h>
+#include <orbslam3/Tracking.h>
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
-
-#include<mutex>
 
 namespace ORB_SLAM3
 {

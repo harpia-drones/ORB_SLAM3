@@ -2,7 +2,7 @@
 
 #include <sophus/geometry.hpp>
 #include <sophus/test_macros.hpp>
-#include "tests.hpp"
+#include <sophus/test/tests.hpp>
 
 namespace Sophus {
 

@@ -1,0 +1,22 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+message("==============================================")
+message("     ORB_SLAM3 auto include")
+message("==============================================")
+
+# External dependencies
+find_dependency(OpenCV 4.2.0 REQUIRED)
+find_dependency(Eigen3 3.4.0 REQUIRED)
+find_dependency(Pangolin REQUIRED)
+
+# ThirdParty
+find_dependency(DBoW2 REQUIRED)
+find_dependency(g2o REQUIRED)
+
+message("  -->  All ORB_SLAM3 dependencies found!")
+message("==============================================")
+
+# Import the targets exported by install(EXPORT ...)
+include("${CMAKE_CURRENT_LIST_DIR}/ORB_SLAM3Targets.cmake")

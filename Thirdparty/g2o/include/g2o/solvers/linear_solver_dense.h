@@ -28,8 +28,8 @@
 #ifndef G2O_LINEAR_SOLVER_DENSE_H
 #define G2O_LINEAR_SOLVER_DENSE_H
 
-#include <core/linear_solver.hpp>
-#include <core/batch_stats.hpp>
+#include <g2o/core/linear_solver.h>
+#include <g2o/core/batch_stats.h>
 
 #include <vector>
 #include <utility>

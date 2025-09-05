@@ -16,10 +16,11 @@
 * If not, see <http://www.gnu.org/licenses/>.
 */
 
+// General
+#include <mutex>
 
-#include "Map.h"
-
-#include<mutex>
+// ORB_SLAM3
+#include <orbslam3/Map.h>
 
 namespace ORB_SLAM3
 {

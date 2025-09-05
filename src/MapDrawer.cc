@@ -16,11 +16,16 @@
 * If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "MapDrawer.h"
-#include "MapPoint.h"
-#include "KeyFrame.h"
-#include <pangolin/pangolin.h>
+// General
 #include <mutex>
+
+// ORB_SLAM3
+#include <orbslam3/MapDrawer.h>
+#include <orbslam3/MapPoint.h>
+#include <orbslam3/KeyFrame.h>
+
+// Pangolin
+#include <pangolin/pangolin.h>
 
 namespace ORB_SLAM3
 {

@@ -24,10 +24,11 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <core/marginal_covariance_cholesky.h>
+#include <g2o/core/marginal_covariance_cholesky.h>
 
 #include <algorithm>
 #include <cassert>
+
 using namespace std;
 
 namespace g2o {

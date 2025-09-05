@@ -17,7 +17,7 @@
 */
 
 
-#include "Config.h"
+#include <orbslam3/Config.h>
 
 namespace ORB_SLAM3
 {

@@ -27,11 +27,11 @@
 #ifndef G2O_GRAPH_OPTIMIZER_CHOL_H_
 #define G2O_GRAPH_OPTIMIZER_CHOL_H_
 
-#include <stuff/macros.h>
+#include <g2o/stuff/macros.h>
 
-#include <core/optimizable_graph.h>
-#include <core/sparse_block_matrix.h>
-#include <core/batch_stats.h>
+#include <g2o/core/optimizable_graph.h>
+#include <g2o/core/sparse_block_matrix.h>
+#include <g2o/core/batch_stats.h>
 
 #include <map>
 

@@ -24,12 +24,13 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <core/matrix_structure.h>
+#include <g2o/core/matrix_structure.h>
 
 #include <string>
 #include <vector>
 #include <fstream>
 #include <algorithm>
+
 using namespace std;
 
 namespace g2o {

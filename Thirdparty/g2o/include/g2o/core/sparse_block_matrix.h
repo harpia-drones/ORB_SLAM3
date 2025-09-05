@@ -35,10 +35,10 @@
 #include <cassert>
 #include <Eigen/Core>
 
-#include <core/sparse_block_matrix_ccs.h>
-#include <core/matrix_structure.h>
-#include <core/matrix_operations.h>
-#include <config/config.h>
+#include <g2o/core/sparse_block_matrix_ccs.h>
+#include <g2o/core/matrix_structure.h>
+#include <g2o/core/matrix_operations.h>
+#include <g2o/config/config.h>
 
 namespace g2o {
   using namespace Eigen;

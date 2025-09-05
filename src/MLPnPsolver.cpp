@@ -46,8 +46,10 @@
 * SUCH DAMAGE.                                                               *
 ******************************************************************************/
 
-#include "MLPnPsolver.h"
+// ORB_SLAM3
+#include <orbslam3/MLPnPsolver.h>
 
+// Eigen3
 #include <Eigen/Sparse>
 
 

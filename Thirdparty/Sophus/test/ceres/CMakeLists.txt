@@ -2,9 +2,9 @@
 list(APPEND SEARCH_HEADERS ${EIGEN3_INCLUDE_DIR})
 
 # git clone https://ceres-solver.googlesource.com/ceres-solver
-find_package( Ceres 1.6.0 QUIET )
+find_package(Ceres 1.6.0 QUIET)
 
-if( Ceres_FOUND )
+if(Ceres_FOUND)
   MESSAGE(STATUS "CERES found")
 
   # Tests to run
@@ -17,4 +17,4 @@ if( Ceres_FOUND )
     ADD_TEST( ${test_src} ${test_src} )
   ENDFOREACH(test_src)
 
-endif( Ceres_FOUND )
+endif(Ceres_FOUND)

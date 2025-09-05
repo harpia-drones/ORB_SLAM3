@@ -17,15 +17,20 @@
 */
 
 
-#include "ORBmatcher.h"
+// General
+#include <limits.h>
+#include <stdint-gcc.h>
 
-#include<limits.h>
+// ORB_SLAM3
+#include <orbslam3/ORBmatcher.h>
 
-#include<opencv2/core/core.hpp>
+// ThirdParty
+#include <DBoW2/FeatureVector.hpp>
 
-#include "Thirdparty/DBoW2/DBoW2/FeatureVector.h"
+// OpenCV
+#include <opencv2/core/core.hpp>
 
-#include<stdint-gcc.h>
+
 
 using namespace std;
 

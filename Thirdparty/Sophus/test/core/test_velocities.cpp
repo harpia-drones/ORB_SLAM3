@@ -1,8 +1,7 @@
 #include <iostream>
 
-#include "tests.hpp"
-
 #include <sophus/velocities.hpp>
+#include <sophus/test/tests.hpp>
 
 namespace Sophus {
 namespace experimental {

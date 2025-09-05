@@ -16,23 +16,23 @@
 * If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-#include "Tracking.h"
-
-#include "ORBmatcher.h"
-#include "FrameDrawer.h"
-#include "Converter.h"
-#include "G2oTypes.h"
-#include "Optimizer.h"
-#include "Pinhole.h"
-#include "KannalaBrandt8.h"
-#include "MLPnPsolver.h"
-#include "GeometricTools.h"
-
+// General
 #include <iostream>
-
 #include <mutex>
 #include <chrono>
+
+// ORB_SLAM3
+#include <orbslam3/Tracking.h>
+#include <orbslam3/ORBmatcher.h>
+#include <orbslam3/FrameDrawer.h>
+#include <orbslam3/Converter.h>
+#include <orbslam3/G2oTypes.h>
+#include <orbslam3/Optimizer.h>
+#include <orbslam3/MLPnPsolver.h>
+#include <orbslam3/GeometricTools.h>
+
+#include <orbslam3/CameraModels/Pinhole.h>
+#include <orbslam3/CameraModels/KannalaBrandt8.h>
 
 
 using namespace std;

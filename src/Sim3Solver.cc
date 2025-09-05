@@ -16,17 +16,20 @@
 * If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-#include "Sim3Solver.h"
-
-#include <vector>
+// General
 #include <cmath>
+#include <vector>
+
+// ORB_SLAM3
+#include <orbslam3/Sim3Solver.h>
+#include <orbslam3/KeyFrame.h>
+#include <orbslam3/ORBmatcher.h>
+
+// ThirdParty
+#include <DUtils/Random.hpp>
+
+// OpenCV
 #include <opencv2/core/core.hpp>
-
-#include "KeyFrame.h"
-#include "ORBmatcher.h"
-
-#include "Thirdparty/DBoW2/DUtils/Random.h"
 
 namespace ORB_SLAM3
 {

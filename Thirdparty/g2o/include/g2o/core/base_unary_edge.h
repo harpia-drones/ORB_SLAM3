@@ -31,9 +31,9 @@
 #include <cassert>
 #include <limits>
 
-#include <core/base_edge.h>
-#include <core/robust_kernel.h>
-#include <config/config.h>
+#include <g2o/core/base_edge.h>
+#include <g2o/core/robust_kernel.h>
+#include <g2o/config/config.h>
 
 namespace g2o {
 

@@ -16,12 +16,12 @@
 * If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Atlas.h"
-#include "Viewer.h"
+#include <orbslam3/Atlas.h>
+#include <orbslam3/Viewer.h>
 
-#include "GeometricCamera.h"
-#include "Pinhole.h"
-#include "KannalaBrandt8.h"
+#include <orbslam3/CameraModels/GeometricCamera.h>
+#include <orbslam3/CameraModels/Pinhole.h>
+#include <orbslam3/CameraModels/KannalaBrandt8.h>
 
 namespace ORB_SLAM3
 {

@@ -2,7 +2,7 @@
 
 #include <sophus/se2.hpp>
 #include <unsupported/Eigen/MatrixFunctions>
-#include "tests.hpp"
+#include <sophus/test/tests.hpp>
 
 // Explicit instantiate all class templates so that all member methods
 // get compiled and for code coverage analysis.

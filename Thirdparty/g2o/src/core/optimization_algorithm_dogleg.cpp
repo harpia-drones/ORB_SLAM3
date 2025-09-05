@@ -24,16 +24,15 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <core/optimization_algorithm_dogleg.h>
-
 #include <iostream>
 
-#include <stuff/timeutil.h>
+#include <g2o/stuff/timeutil.h>
+#include <g2o/core/optimization_algorithm_dogleg.h>
+#include <g2o/core/block_solver.h>
+#include <g2o/core/sparse_optimizer.h>
+#include <g2o/core/solver.h>
+#include <g2o/core/batch_stats.h>
 
-#include <core/block_solver.h>
-#include <core/sparse_optimizer.h>
-#include <core/solver.h>
-#include <core/batch_stats.h>
 using namespace std;
 
 namespace g2o {

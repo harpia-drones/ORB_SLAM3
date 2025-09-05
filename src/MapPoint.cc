@@ -16,10 +16,12 @@
 * If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "MapPoint.h"
-#include "ORBmatcher.h"
+// General
+#include <mutex>
 
-#include<mutex>
+// ORB_SLAM3
+#include <orbslam3/MapPoint.h>
+#include <orbslam3/ORBmatcher.h>
 
 namespace ORB_SLAM3
 {

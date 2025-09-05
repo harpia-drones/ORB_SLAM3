@@ -29,8 +29,9 @@
 #include <vector>
 #include <assert.h>
 #include <iostream>
-#include <core/hyper_dijkstra.h>
-#include <stuff/macros.h>
+
+#include <g2o/core/hyper_dijkstra.h>
+#include <g2o/stuff/macros.h>
 
 namespace g2o{
 

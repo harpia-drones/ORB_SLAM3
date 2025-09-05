@@ -17,10 +17,12 @@
 */
 
 
-#include "Viewer.h"
+#include <mutex>
+
+#include <orbslam3/Viewer.h>
+
 #include <pangolin/pangolin.h>
 
-#include <mutex>
 
 namespace ORB_SLAM3
 {

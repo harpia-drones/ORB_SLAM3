@@ -16,17 +16,20 @@
 * If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Settings.h"
+// General
+#include <iostream>
 
-#include "CameraModels/Pinhole.h"
-#include "CameraModels/KannalaBrandt8.h"
+// ORB_SLAM3
+#include <orbslam3/Settings.h>
+#include <orbslam3/System.h>
 
-#include "System.h"
+#include <orbslam3/CameraModels/Pinhole.h>
+#include <orbslam3/CameraModels/KannalaBrandt8.h>
 
+// OpenCV
 #include <opencv2/core/persistence.hpp>
 #include <opencv2/core/eigen.hpp>
 
-#include <iostream>
 
 using namespace std;
 

@@ -1,0 +1,9 @@
+build/
+lib/
+Thirdparty/g2o/build
+Thirdparty/g2o/lib
+Thirdparty/DBoW2/build
+Thirdparty/DBoW2/lib
+Thirdparty/Sophus/build
+Thirdparty/Pangolin/build
+Vocabulary/ORBvoc.txt

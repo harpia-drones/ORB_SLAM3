@@ -16,18 +16,17 @@
 * If not, see <http://www.gnu.org/licenses/>.
 */
 
+// General
+#include <mutex>
+#include <thread>
 
-#include "LoopClosing.h"
-
-#include "Sim3Solver.h"
-#include "Converter.h"
-#include "Optimizer.h"
-#include "ORBmatcher.h"
-#include "G2oTypes.h"
-
-#include<mutex>
-#include<thread>
-
+// ORB_SLAM3
+#include <orbslam3/LoopClosing.h>
+#include <orbslam3/Sim3Solver.h>
+#include <orbslam3/Converter.h>
+#include <orbslam3/Optimizer.h>
+#include <orbslam3/ORBmatcher.h>
+#include <orbslam3/G2oTypes.h>
 
 namespace ORB_SLAM3
 {

@@ -7,14 +7,16 @@ project(g2o LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3 -march=native")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -march=native") # Comment to show compilation warnings
+# set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -03 -march=native") # Uncomment to show compilation warnings
 
 # Build type default
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
-
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+
+add_compile_options(-w) # Comment to show compilation warnings
 
 # ==================================
 #     Dependencies
@@ -45,9 +47,10 @@ add_library(DBoW2 SHARED
 
 # Include headers
 target_include_directories(DBoW2
-	PUBLIC
-		${CMAKE_CURRENT_SOURCE_DIR}/include
-		${OpenCV_INCLUDE_DIRS}       
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<BUILD_INTERFACE:${OpenCV_INCLUDE_DIRS}>
+    $<INSTALL_INTERFACE:include>
 )
 
 # Link to OpenCV
@@ -56,6 +59,32 @@ target_link_libraries(DBoW2 PUBLIC ${OpenCV_LIBS})
 # ==================================
 #     Output path
 # ==================================
+
 set_target_properties(DBoW2 PROPERTIES
   LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
 )
+
+# ==================================
+#     Installation
+# ==================================
+
+# Install headers
+install(DIRECTORY include/ DESTINATION include)
+
+# Install targets
+install(TARGETS DBoW2
+  EXPORT DBoW2Config
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
+  INCLUDES DESTINATION include
+)
+
+# Export targets
+install(EXPORT DBoW2Config
+  FILE DBoW2Config.cmake
+  NAMESPACE DBoW2::
+  DESTINATION lib/cmake/DBoW2
+)
+
+

@@ -16,13 +16,18 @@
 * If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-
-#include "System.h"
-#include "Converter.h"
-#include <thread>
-#include <pangolin/pangolin.h>
+// General
 #include <iomanip>
+#include <thread>
+
+// ORB_SLAM3
+#include <orbslam3/System.h>
+#include <orbslam3/Converter.h>
+
+// Pangolin
+#include <pangolin/pangolin.h>
+
+// OTHERS
 #include <openssl/md5.h>
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/string.hpp>

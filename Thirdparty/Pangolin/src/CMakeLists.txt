@@ -59,80 +59,6 @@ if(BUILD_PANGOLIN_VARS)
   endif()
 endif()
 
-# option(BUILD_PANGOLIN_VIDEO "Build support for Pangolin Video Utilities" OFF)
-# if(BUILD_PANGOLIN_VIDEO)
-#   # Generic video includes
-#   append_glob(HEADERS ${INCDIR}/video/*.h*)
-#   append_glob(SOURCES video/*.cpp)
-
-#   # Generic video drivers
-#   list(APPEND HEADERS
-#     ${INCDIR}/video/drivers/test.h
-#     ${INCDIR}/video/drivers/images.h
-#     ${INCDIR}/video/drivers/images_out.h
-#     ${INCDIR}/video/drivers/split.h
-#     ${INCDIR}/video/drivers/truncate.h
-#     ${INCDIR}/video/drivers/pvn.h
-#     ${INCDIR}/video/drivers/pango.h
-#     ${INCDIR}/video/drivers/pango_video_output.h
-#     ${INCDIR}/video/drivers/debayer.h
-#     ${INCDIR}/video/drivers/shift.h
-#     ${INCDIR}/video/drivers/mirror.h
-#     ${INCDIR}/video/drivers/unpack.h
-#     ${INCDIR}/video/drivers/pack.h
-#     ${INCDIR}/video/drivers/join.h
-#     ${INCDIR}/video/drivers/merge.h
-#     ${INCDIR}/video/drivers/thread.h
-#   )
-#   list(APPEND SOURCES
-#     video/drivers/test.cpp
-#     video/drivers/images.cpp
-#     video/drivers/images_out.cpp
-#     video/drivers/split.cpp
-#     video/drivers/truncate.cpp
-#     video/drivers/pvn.cpp
-#     video/drivers/pango.cpp
-#     video/drivers/pango_video_output.cpp
-#     video/drivers/debayer.cpp
-#     video/drivers/shift.cpp
-#     video/drivers/mirror.cpp
-#     video/drivers/unpack.cpp
-#     video/drivers/pack.cpp
-#     video/drivers/join.cpp
-#     video/drivers/merge.cpp
-#     video/drivers/json.cpp
-#     video/drivers/thread.cpp
-#   )
-
-#   list(APPEND VIDEO_FACTORY_REG
-#     RegisterTestVideoFactory
-#     RegisterImagesVideoFactory
-#     RegisterImagesVideoOutputFactory
-#     RegisterSplitVideoFactory
-#     RegisterTruncateVideoFactory
-#     RegisterPvnVideoFactory
-#     RegisterPangoVideoFactory
-#     RegisterPangoVideoOutputFactory
-#     RegisterDebayerVideoFactory
-#     RegisterShiftVideoFactory
-#     RegisterMirrorVideoFactory
-#     RegisterUnpackVideoFactory
-#     RegisterPackVideoFactory
-#     RegisterJoinVideoFactory
-#     RegisterMergeVideoFactory
-#     RegisterJsonVideoFactory
-#     RegisterThreadVideoFactory
-#   )
-
-#   if(_LINUX_)
-#     list(APPEND HEADERS ${INCDIR}/video/drivers/shared_memory.h)
-#     list(APPEND SOURCES video/drivers/shared_memory.cpp)
-#     # Required for shared memory API using some versions of glibc
-#     list(APPEND LINK_LIBS rt pthread)
-#   endif()
-
-# endif()
-
 if(BUILD_PANGOLIN_GUI AND BUILD_PANGOLIN_VARS AND BUILD_PANGOLIN_VIDEO )
     list(APPEND HEADERS ${INCDIR}/tools/video_viewer.h)
     list(APPEND SOURCES tools/video_viewer.cpp)
@@ -195,89 +121,7 @@ endif()
 #######################################################
 ## Find optional dependencies
 
-if(ANDROID)
-    # Fix issue with thread local storage on android.
-    add_definitions(-fno-data-sections)
-    list(APPEND LINK_LIBS android log)
-elseif(IOS)
-    # Nothing specific in here yet.
-else()
-    if(BUILD_PANGOLIN_GUI)
-        if(_WIN_)
-            list(APPEND WINDOW_FACTORY_REG RegisterWinWindowFactory)
-            list(APPEND SOURCES display/device/display_win.cpp )
-        elseif(_OSX_)
-            list(APPEND WINDOW_FACTORY_REG RegisterOsxWindowFactory)
-            list(APPEND SOURCES display/device/display_osx.mm display/device/PangolinNSApplication.mm display/device/PangolinNSGLView.mm  )
-            list(APPEND LINK_LIBS "-framework Cocoa" )
-        elseif(_LINUX_)
-            # Wayland
-            if(DISPLAY_WAYLAND)
-                find_package(Wayland QUIET)
-                if(WAYLAND_CLIENT_FOUND)
-                    find_package(Wayland REQUIRED)
-                    find_package(PkgConfig)
-                    pkg_check_modules(xkbcommon REQUIRED xkbcommon)
-                    pkg_check_modules(egl QUIET egl)
 
-                    # find Wayland protocols
-                    pkg_get_variable(WAYLAND_PROTOCOLS_DIR wayland-protocols pkgdatadir)
-
-                    # generate header for protocol 'xdg_shell'
-                    set(XDG_PROT_DEF "${WAYLAND_PROTOCOLS_DIR}/stable/xdg-shell/xdg-shell.xml")
-                    if(EXISTS ${XDG_PROT_DEF})
-                        # use the 'xdg_shell' protocol
-                        add_definitions(-DUSE_WL_XDG=1)
-
-                        # find 'wayland-scanner' executable
-                        pkg_get_variable(WAYLAND_SCANNER wayland-scanner wayland_scanner)
-
-                        # generate protocol implementation
-                        add_custom_command(
-                            OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/xdg-shell-client-protocol.h
-                            COMMAND ${WAYLAND_SCANNER} client-header ${XDG_PROT_DEF} xdg-shell-client-protocol.h)
-                        add_custom_command(
-                            OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/xdg-shell-protocol.c
-                            COMMAND ${WAYLAND_SCANNER} private-code ${XDG_PROT_DEF} xdg-shell-protocol.c
-                            DEPENDS xdg-shell-client-protocol.h)
-                        include_directories(${CMAKE_CURRENT_BINARY_DIR})
-                        list(APPEND SOURCES xdg-shell-protocol.c)
-
-                    else()
-                        # use deprecated 'wl_shell' interface
-                        add_definitions(-DUSE_WL_XDG=0)
-                    endif()
-
-                    list(APPEND WINDOW_FACTORY_REG RegisterWaylandWindowFactory)
-                    list(APPEND SOURCES display/device/display_wayland.cpp)
-                    list(APPEND LINK_LIBS
-                        ${WAYLAND_CLIENT_LIBRARIES}
-                        ${WAYLAND_EGL_LIBRARIES}
-                        ${WAYLAND_CURSOR_LIBRARIES}
-                        ${egl_LIBRARIES}
-                        ${xkbcommon_LIBRARIES}
-                    )
-                    list(APPEND INTERNAL_INC
-                        ${WAYLAND_CLIENT_INCLUDE_DIR}
-                        ${WAYLAND_EGL_INCLUDE_DIR}
-                        ${WAYLAND_CURSOR_INCLUDE_DIR}
-                        ${egl_INCLUDE_DIRS}
-                        ${xkbcommon_INCLUDE_DIRS}
-                    )
-                endif()
-            endif()
-
-            # X11
-            find_package(X11 QUIET)
-            if(DISPLAY_X11 AND X11_FOUND)
-                list(APPEND WINDOW_FACTORY_REG RegisterX11WindowFactory)
-                list(APPEND USER_INC ${X11_INCLUDE_DIR})
-                list(APPEND SOURCES display/device/display_x11.cpp )
-                list(APPEND LINK_LIBS ${X11_LIBRARIES} )
-            endif()
-        endif()
-    endif()
-endif()
 
 if(UNIX)
   append_glob(HEADERS ${INCDIR}/utils/posix/*.h*)
@@ -352,20 +196,6 @@ if(BUILD_PANGOLIN_FFMPEG AND BUILD_PANGOLIN_VIDEO)
       set_source_files_properties(video/drivers/ffmpeg.cpp    PROPERTIES COMPILE_FLAGS "-Wno-deprecated-declarations")
     endif()
     message(STATUS "ffmpeg Found and Enabled")
-  endif()
-endif()
-
-option(BUILD_PANGOLIN_LIBREALSENSE "Build support for LibRealSense video input" ON)
-if(BUILD_PANGOLIN_LIBREALSENSE AND BUILD_PANGOLIN_VIDEO)
-  find_package(LibRealSense QUIET)
-  if(LIBREALSENSE_FOUND)
-    set(HAVE_LIBREALSENSE 1)
-    list(APPEND INTERNAL_INC  ${LIBREALSENSE_INCLUDE_DIRS} )
-    list(APPEND LINK_LIBS ${LIBREALSENSE_LIBRARIES} )
-    list(APPEND HEADERS ${INCDIR}/video/drivers/realsense.h )
-    list(APPEND SOURCES video/drivers/realsense.cpp)
-    list(APPEND VIDEO_FACTORY_REG RegisterRealSenseVideoFactory )
-    message(STATUS "LibRealSense Found and Enabled")
   endif()
 endif()
 

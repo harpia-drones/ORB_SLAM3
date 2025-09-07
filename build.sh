@@ -3,6 +3,10 @@ ORBSLAM3_ROOT_DIR="$(pwd)"
 sudo apt-get update
 sudo apt-get install -y libgl1-mesa-dev libglew-dev libeigen3-dev
 
+cd "${ORBSLAM3_ROOT_DIR}/Vocabulary"
+tar -xf ORBvoc.txt.tar.gz ORBvoc.txt
+echo "export ORB_VOC_PATH='$ORBSLAM3_ROOT_DIR/Vocabulary/ORBvoc.txt'" >> ~/.bashrc
+
 cd "${ORBSLAM3_ROOT_DIR}/Thirdparty/DBoW2"
 mkdir -p build
 cd build

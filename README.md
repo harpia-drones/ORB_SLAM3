@@ -1,5 +1,7 @@
 # Adaptação do pacote ORB_SLAM
 
+Fork de [ORB_SLAM3_STEREO_FIXED](https://github.com/zang09/ORB-SLAM3-STEREO-FIXED.git).
+
 ### Testado em:
 - Ubuntu 24.04 LTS (amd and arm)
 - Pangolin == v0.6 (included as a thirdparty lib)

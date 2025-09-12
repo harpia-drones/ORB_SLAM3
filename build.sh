@@ -5,7 +5,11 @@ sudo apt-get install -y libgl1-mesa-dev libglew-dev libeigen3-dev
 
 cd "${ORBSLAM3_ROOT_DIR}/Vocabulary"
 tar -xf ORBvoc.txt.tar.gz ORBvoc.txt
-echo "export ORB_VOC_PATH='$ORBSLAM3_ROOT_DIR/Vocabulary/ORBvoc.txt'" >> ~/.bashrc
+
+cat <<EOF >> ~/.bashrc
+export ORB_VOC_PATH="$ORBSLAM3_ROOT_DIR/Vocabulary/ORBvoc.txt"
+export TUM1_PATH="$ORBSLAM3_ROOT_DIR/config/TUM1.yaml"
+EOF
 
 cd "${ORBSLAM3_ROOT_DIR}/Thirdparty/DBoW2"
 mkdir -p build
